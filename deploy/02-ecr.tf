@@ -1,3 +1,3 @@
-resource "aws_ecr_repository" "node_app" {
+resource "aws_ecr_repository" "app" {
   name = var.app_name
 }

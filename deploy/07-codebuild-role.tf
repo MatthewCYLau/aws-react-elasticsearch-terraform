@@ -61,7 +61,7 @@ resource "aws_iam_role_policy" "codebuild_policy" {
                 "ecr:PutImage"
             ],
             "Resource": [
-              "${aws_ecr_repository.node_app.arn}"
+              "${aws_ecr_repository.app.arn}"
             ]
         },
         {

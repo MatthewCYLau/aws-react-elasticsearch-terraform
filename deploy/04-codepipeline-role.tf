@@ -1,5 +1,5 @@
-resource "aws_iam_role" "node_express_ecs_codepipeline_role" {
-  name = "node_express_ecs_codepipeline_role"
+resource "aws_iam_role" "codepipeline_role" {
+  name = "codepipeline-role"
 
   assume_role_policy = <<EOF
 {
@@ -20,7 +20,7 @@ EOF
 
 resource "aws_iam_role_policy" "codepipeline_policy" {
   name = "codepipeline_policy"
-  role = aws_iam_role.node_express_ecs_codepipeline_role.id
+  role = aws_iam_role.codepipeline_role.id
 
   policy = <<EOF
 {

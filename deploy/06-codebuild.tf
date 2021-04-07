@@ -42,7 +42,7 @@ resource "aws_codebuild_project" "node_aws_fargate_app" {
 
     environment_variable {
       name  = "ECR_REPO_URL"
-      value = aws_ecr_repository.node_app.repository_url
+      value = aws_ecr_repository.app.repository_url
     }
   }
 
