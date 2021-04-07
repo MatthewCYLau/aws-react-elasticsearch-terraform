@@ -31,10 +31,9 @@ aws configure # configure your AWS CLI profile
 default_region            = "us-east-1"
 docker_username           = "matlau"
 github_username           = "MatthewCYLau"
-github_project_name       = "node-aws-fargate-terraform"
-app_name                  = "node-aws-fargate-app"
+github_project_name       = "aws-react-elasticsearch-terraform"
+app_name                  = "aws-elasticsearch-app"
 environment               = "staging"
-mongo_password_secret_arn = <MongoPassword Secret ARN>
 ```
 
 ## Deploy
