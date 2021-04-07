@@ -1,0 +1,24 @@
+# Items that don't need to be in a Docker image.
+# Anything not used by the build system should go here.
+Dockerfile
+docker-compose.yml
+docker-compose.local.yml
+.dockerignore
+.editorconfig
+.gitignore
+.git
+**/README.md
+**/.DS_Store
+**/coverage
+logs
+
+# Development
+**/.eslintrc
+**/.eslintrc.json
+**/.prettierrc
+**/.prettierrc.json
+**/.editorconfig
+
+# Artifacts that will be built during image creation.
+**/node_modules
+**/build

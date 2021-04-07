@@ -1,0 +1,6 @@
+default_region      = "<YOUR_AWS_DEFAULT_REGION>"
+docker_username     = "<YOUR_DOCKER_USERNAME>"
+github_username     = "<YOUR_GITHUB_USERNAME>"
+github_project_name = "<YOUR_GITHUB_PROJECT_NAME>"
+app_name            = "<GIVE_YOUR_APP_A_NAME!>"
+environment         = "<ENVIRONMENT_NAME>"

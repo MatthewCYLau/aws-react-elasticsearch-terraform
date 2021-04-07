@@ -1,0 +1,32 @@
+version: 0.2
+
+env:
+  secrets-manager:
+    LOCAL_DOCKER_HUB_ACCESS_TOKEN: "DockerHubAccessToken:DOCKER_HUB_ACCESS_TOKEN"
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - echo Logging Docker Hub...
+      - docker login --username $DOCKER_USERNAME -p $LOCAL_DOCKER_HUB_ACCESS_TOKEN
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t $IMAGE_NAME:latest .
+      - docker tag $IMAGE_NAME:latest $ECR_REPO_URL:latest
+      - docker tag $IMAGE_NAME:latest $ECR_REPO_URL:$IMAGE_TAG
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push $ECR_REPO_URL:latest
+      - docker push $ECR_REPO_URL:$IMAGE_TAG
+      - echo Writing image definitions file...
+      - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $ECR_REPO_URL:$IMAGE_TAG > imagedefinitions.json
+artifacts:
+  files: imagedefinitions.json

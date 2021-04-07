@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+    reactmaterial:
+        build: ./
+        image: reactmaterial
+        container_name: reactmaterial
+        ports:
+            - 3001:3001

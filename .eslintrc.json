@@ -1,0 +1,56 @@
+{
+    "root": true,
+    "parser": "babel-eslint",
+    "env": {
+        "browser": true,
+        "node": true,
+        "jest": true
+    },
+    "extends": "airbnb",
+    "rules": {
+        "indent": ["warn", 4, {
+            "SwitchCase": 1,
+            "MemberExpression": 0
+        }],
+        "comma-dangle": "off",
+        "max-len": ["warn", {
+            "code": 120,
+            "tabWidth": 4,
+            "comments": 120,
+            "ignoreUrls": true,
+            "ignoreStrings": true,
+            "ignoreTemplateLiterals": true,
+            "ignoreRegExpLiterals": true
+        }],
+        "nonblock-statement-body-position": "off",
+        "object-curly-newline": "off",
+        "valid-typeof": ["warn", {
+            "requireStringLiterals": false
+        }],
+        "no-unused-vars": ["error", {
+            "argsIgnorePattern": "next"
+        }],
+        "import/no-extraneous-dependencies": ["error", {
+            "devDependencies": [
+                "**/setupTests.js",
+                "**/__tests__/**/*.[jt]s?(x)",
+                "**/?(*.)+(spec|test).[jt]s?(x)"
+            ]
+        }],
+        "react/destructuring-assignment": "off",
+        "react/jsx-indent-props": ["warn", 4],
+        "react/jsx-indent": ["warn", 4, {
+            "checkAttributes": true,
+            "indentLogicalExpressions": true
+        }],
+        "react/jsx-no-duplicate-props": ["error", {
+            "ignoreCase": false
+        }],
+        "react/jsx-props-no-spreading": ["error", {
+            "html": "enforce",
+            "custom": "enforce",
+            "explicitSpread": "enforce",
+            "exceptions": []
+        }]
+    }
+}
