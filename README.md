@@ -4,7 +4,7 @@ A reference project to deploy a React app onto Amazon ECS on AWS Fargate, and Am
 
 A movie search app with Amazon Elasticsearch Service
 
-![AWS Architecture](img/aws-react-elasticsearch.JPG)
+![AWS Architecture](img/aws-elasticsearch.JPG)
 
 ## Pre-requisite
 

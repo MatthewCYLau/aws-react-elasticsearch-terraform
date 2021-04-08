@@ -1,8 +1,8 @@
-resource "aws_codebuild_project" "node_aws_fargate_app" {
-  name          = "node_aws_fargate_app"
-  description   = "Node AWS Fargate App"
+resource "aws_codebuild_project" "app" {
+  name          = "AWS-Elasticsearch-App"
+  description   = "AWS Elasticsearch App"
   build_timeout = "5"
-  service_role  = aws_iam_role.node_express_ecs_codebuild_role.arn
+  service_role  = aws_iam_role.codebuild_role.arn
 
   artifacts {
     type = "CODEPIPELINE"

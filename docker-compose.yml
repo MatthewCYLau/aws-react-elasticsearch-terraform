@@ -1,8 +1,8 @@
 version: '3.7'
 services:
-    reactmaterial:
+    aws-elasticsearch:
         build: ./
-        image: reactmaterial
-        container_name: reactmaterial
+        image: aws-elasticsearch
+        container_name: aws-elasticsearch
         ports:
             - 3001:3001

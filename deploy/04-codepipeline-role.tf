@@ -46,7 +46,7 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
         "codebuild:StartBuild"
       ],
       "Resource": [
-        "${aws_codebuild_project.node_aws_fargate_app.arn}"
+        "${aws_codebuild_project.app.arn}"
       ]
     },
     {

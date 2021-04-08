@@ -44,7 +44,7 @@ resource "aws_codepipeline" "app_codepipeline" {
       version          = "1"
 
       configuration = {
-        ProjectName = aws_codebuild_project.node_aws_fargate_app.name
+        ProjectName = aws_codebuild_project.app.name
       }
     }
   }

@@ -1,10 +1,10 @@
-data "template_file" "node_app" {
+data "template_file" "app" {
   template = file("task-definitions/service.json.tpl")
   vars = {
     aws_ecr_repository            = aws_ecr_repository.app.repository_url
     tag                           = "latest"
     container_name                = var.app_name
-    aws_cloudwatch_log_group_name = aws_cloudwatch_log_group.node-aws-fargate-app.name
+    aws_cloudwatch_log_group_name = aws_cloudwatch_log_group.app.name
   }
 }
 
@@ -15,7 +15,7 @@ resource "aws_ecs_task_definition" "service" {
   cpu                      = 256
   memory                   = 2048
   requires_compatibilities = ["FARGATE"]
-  container_definitions    = data.template_file.node_app.rendered
+  container_definitions    = data.template_file.app.rendered
   tags = {
     Environment = var.environment
     Application = var.app_name

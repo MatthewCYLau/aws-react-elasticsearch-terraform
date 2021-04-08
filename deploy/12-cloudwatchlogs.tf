@@ -1,5 +1,5 @@
-resource "aws_cloudwatch_log_group" "node-aws-fargate-app" {
-  name = "awslogs-node-aws-fargate-app-staging"
+resource "aws_cloudwatch_log_group" "app" {
+  name = "AWS-Elasticsearch-App/${var.environment}"
 
   tags = {
     Environment = var.environment

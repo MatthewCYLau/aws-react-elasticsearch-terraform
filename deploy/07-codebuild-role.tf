@@ -1,4 +1,4 @@
-resource "aws_iam_role" "node_express_ecs_codebuild_role" {
+resource "aws_iam_role" "codebuild_role" {
   name = "node_express_ecs_codebuild_role"
 
   assume_role_policy = <<EOF
@@ -19,7 +19,7 @@ EOF
 
 resource "aws_iam_role_policy" "codebuild_policy" {
   name = "codebuild_policy"
-  role = aws_iam_role.node_express_ecs_codebuild_role.id
+  role = aws_iam_role.codebuild_role.id
 
   policy = <<EOF
 {
