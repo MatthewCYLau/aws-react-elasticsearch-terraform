@@ -34,3 +34,5 @@ firebase-debug.log*
 *.tfstate.*
 
 *secret.tfvars
+
+*.zip
