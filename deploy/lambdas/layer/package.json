@@ -1,0 +1,15 @@
+{
+    "name": "layer",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "npm install && mkdir -p nodejs && cp -r node_modules nodejs/ && zip -r layer.zip nodejs"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "elasticsearch": "^15.5.0",
+        "http-aws-es": "^6.0.0"
+    }
+}
