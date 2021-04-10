@@ -8,6 +8,12 @@ resource "aws_lambda_function" "process_es" {
 
   role   = aws_iam_role.process_es.arn
   layers = [aws_lambda_layer_version.app.arn]
+
+  # vpc_config {
+  #   subnet_ids         = data.aws_subnet_ids.app.ids
+  #   security_group_ids = [aws_security_group.redis.id]
+  # }
+
 }
 
 resource "aws_iam_role" "process_es" {
