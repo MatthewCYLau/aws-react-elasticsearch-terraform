@@ -11,19 +11,17 @@ exports.handler = async function(event, context) {
             credentials: new AWS.EnvironmentCredentials('AWS')
         }
     });
-    client
-        .search({
-            index: 'twitter',
-            type: 'tweets',
-            body: {
-                query: {
-                    match: {
-                        body: 'elasticsearch'
-                    }
+    const res = await client.search({
+        index: 'twitter',
+        type: 'tweets',
+        body: {
+            query: {
+                match: {
+                    body: 'elasticsearch'
                 }
             }
-        })
-        .then((res) => console.log(res));
-    console.log('EVENT: \n' + JSON.stringify(event, null, 2));
-    return context.logStreamName;
+        }
+    });
+
+    return Promise.all(res);
 };

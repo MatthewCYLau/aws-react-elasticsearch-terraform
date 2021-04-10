@@ -9,11 +9,22 @@ resource "aws_lambda_function" "process_es" {
   role   = aws_iam_role.process_es.arn
   layers = [aws_lambda_layer_version.app.arn]
 
-  # vpc_config {
-  #   subnet_ids         = data.aws_subnet_ids.app.ids
-  #   security_group_ids = [aws_security_group.redis.id]
-  # }
+  vpc_config {
+    subnet_ids = [
+      aws_subnet.nated_1.id,
+      aws_subnet.nated_2.id,
+      aws_subnet.nated_3.id
+    ]
 
+    security_group_ids = [
+      aws_security_group.es.id
+    ]
+  }
+}
+
+resource "aws_iam_role_policy_attachment" "process_es_attach" {
+  role       = aws_iam_role.process_es.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
 }
 
 resource "aws_iam_role" "process_es" {
