@@ -12,12 +12,12 @@ exports.handler = async function(event, context) {
         }
     });
     const res = await client.search({
-        index: 'twitter',
-        type: 'tweets',
+        index: 'lambda-s3-index',
+        type: 'lambda-type',
         body: {
             query: {
                 match: {
-                    body: 'elasticsearch'
+                    message: 'some-file'
                 }
             }
         }

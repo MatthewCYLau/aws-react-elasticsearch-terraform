@@ -36,3 +36,5 @@ firebase-debug.log*
 *secret.tfvars
 
 *.zip
+
+**/s3-to-es

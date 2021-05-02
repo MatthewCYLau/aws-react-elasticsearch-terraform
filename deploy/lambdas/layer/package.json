@@ -9,6 +9,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "axios": "^0.21.1",
         "elasticsearch": "^15.5.0",
         "http-aws-es": "^6.0.0"
     }

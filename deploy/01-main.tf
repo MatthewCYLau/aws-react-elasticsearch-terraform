@@ -18,7 +18,7 @@ variable "region" {
 }
 
 locals {
-  common_prefix = "stag"
+  common_prefix = "dev"
   elk_domain    = "${local.common_prefix}-elk-domain"
 }
 

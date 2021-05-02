@@ -19,7 +19,7 @@ resource "aws_elasticsearch_domain" "es" {
 
   cluster_config {
     instance_count         = 3
-    instance_type          = "r5.large.elasticsearch"
+    instance_type          = "t2.medium.elasticsearch"
     zone_awareness_enabled = true
 
     zone_awareness_config {
