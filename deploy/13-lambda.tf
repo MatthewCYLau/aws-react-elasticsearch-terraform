@@ -21,7 +21,7 @@ resource "aws_lambda_function" "process_es" {
     ]
   }
 
-   environment {
+  environment {
     variables = {
       ES_HOST_URL = aws_elasticsearch_domain.es.endpoint
     }

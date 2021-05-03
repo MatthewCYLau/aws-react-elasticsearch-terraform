@@ -10,10 +10,6 @@ resource "aws_lb" "staging" {
   }
 }
 
-output "aws_lb_dns_name" {
-  value = aws_lb.staging.dns_name
-}
-
 resource "aws_lb_listener" "https_forward" {
   load_balancer_arn = aws_lb.staging.arn
   port              = 80

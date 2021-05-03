@@ -23,17 +23,16 @@ aws configure # configure your AWS CLI profile
 
 -   Create an [S3 bucket](https://www.terraform.io/docs/language/settings/backends/s3.html) to store Terraform state. Populate bucket name in `01-main.tf`
 
--   Create a secret on [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/) named `DockerHubAccessToken` with key `DOCKER_HUB_ACCESS_TOKEN`, and your [Docker access token](https://docs.docker.com/docker-hub/access-tokens/) as value
-
 *   Populate `terraform.tfvars`:
 
 ```bash
-default_region            = "us-east-1"
-docker_username           = "matlau"
-github_username           = "MatthewCYLau"
-github_project_name       = "aws-react-elasticsearch-terraform"
-app_name                  = "aws-elasticsearch-app"
-environment               = "staging"
+default_region      = "us-east-1"
+docker_username     = "matlau"
+github_username     = "MatthewCYLau"
+github_project_name = "aws-react-elasticsearch-terraform"
+app_name            = "aws-elasticsearch-app"
+environment         = "staging"
+upload_bucket_name  = "matlau-s3-es-upload"
 ```
 
 ## Deploy
@@ -46,6 +45,11 @@ terraform destroy # destroys AWS stack
 ```
 
 When prompted for `github_token`, provide the value and hit Return. Alternatively, create a [local environment variable](https://www.terraform.io/docs/language/values/variables.html#environment-variables) named `TF_VAR_github_token`
+
+# Usage
+
+-   Upload `deploy/lambdas/processS3Uploads/data.txt` to the S3 ES Upload bucket
+-   Then, visit app at `aws_lb_dns_name`
 
 ## Contributing
 
