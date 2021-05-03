@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import RoutingPage from '../pages/RoutingPage';
+import AboutPage from '../pages/AboutPage';
 import NotFoundPage from '../pages/NotFoundPage';
 
 /**
@@ -17,7 +17,7 @@ import NotFoundPage from '../pages/NotFoundPage';
  */
 const Routes = () => (
     <Switch>
-        <Route exact path="/routing" component={RoutingPage} />
+        <Route exact path="/about" component={AboutPage} />
         <Route component={NotFoundPage} />
     </Switch>
 );
