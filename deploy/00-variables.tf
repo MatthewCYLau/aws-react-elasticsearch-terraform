@@ -11,3 +11,5 @@ variable "environment" {}
 variable "default_region" {}
 
 variable "docker_username" {}
+
+variable "upload_bucket_name" {}

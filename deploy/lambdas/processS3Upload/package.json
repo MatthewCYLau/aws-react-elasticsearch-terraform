@@ -1,0 +1,16 @@
+{
+    "name": "processS3Upload",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "elasticsearch": "^15.5.0",
+        "http-aws-es": "^6.0.0"
+    }
+}

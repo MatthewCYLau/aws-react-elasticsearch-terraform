@@ -25,20 +25,15 @@ resource "aws_elasticsearch_domain" "es" {
   elasticsearch_version = "7.7"
 
   cluster_config {
-    instance_count         = 3
+    instance_count         = 1
     instance_type          = "t2.medium.elasticsearch"
-    zone_awareness_enabled = true
+    zone_awareness_enabled = false
 
-    zone_awareness_config {
-      availability_zone_count = 3
-    }
   }
 
   vpc_options {
     subnet_ids = [
-      aws_subnet.nated_1.id,
-      aws_subnet.nated_2.id,
-      aws_subnet.nated_3.id
+      aws_subnet.nated_1.id
     ]
 
     security_group_ids = [

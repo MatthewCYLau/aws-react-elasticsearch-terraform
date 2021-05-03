@@ -48,7 +48,7 @@ When prompted for `github_token`, provide the value and hit Return. Alternativel
 
 # Usage
 
--   Upload `deploy/lambdas/processS3Uploads/data.txt` to the S3 ES Upload bucket
+-   Upload `deploy/lambdas/processS3Upload/data.txt` to the S3 ES Upload bucket
 -   Then, visit app at `aws_lb_dns_name`
 
 ## Contributing
