@@ -4,7 +4,7 @@ const elasticsearch = require('elasticsearch');
 
 exports.handler = async function(event, context) {
     const client = elasticsearch.Client({
-        host: '<YOUR_ES_CLUSTER_ID>.<YOUR_ES_REGION>.es.amazonaws.com',
+        host: process.env.ES_HOST_URL,
         connectionClass: awsHttpClient,
         amazonES: {
             region: 'us-east-1',
@@ -16,12 +16,17 @@ exports.handler = async function(event, context) {
         type: 'lambda-type',
         body: {
             query: {
-                match: {
-                    message: 'some-file'
-                }
+                match_all: {}
             }
         }
     });
 
-    return Promise.all(res);
+    return {
+        statusCode: 200,
+        headers: {
+            'Access-Control-Allow-Origin': '*', // Required for CORS support to work
+            'Access-Control-Allow-Credentials': true // Required for cookies, authorization headers with HTTPS
+        },
+        body: JSON.stringify(res)
+    };
 };

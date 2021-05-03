@@ -20,6 +20,12 @@ resource "aws_lambda_function" "process_es" {
       aws_security_group.es.id
     ]
   }
+
+   environment {
+    variables = {
+      ES_HOST_URL = aws_elasticsearch_domain.es.endpoint
+    }
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "process_es_attach" {
