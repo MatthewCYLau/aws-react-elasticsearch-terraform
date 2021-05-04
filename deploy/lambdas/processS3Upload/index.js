@@ -19,19 +19,26 @@ exports.handler = async (event, context) => {
         }
     });
 
-    await client.index({
-        index: 'lambda-s3-index',
-        type: 'lambda-type',
-        body: {
-            character: 'Ned Stark',
-            quote: 'Winter is coming.'
-        }
-    });
     try {
         const { Body } = await s3.getObject(params).promise();
         const data = new Buffer.from(Body).toString('utf8');
-        // console.log(data);
-        return data;
+        const todos = data.split(',');
+
+        const promises = todos.map((todo) => {
+            const indexDocument = async () => {
+                const res = await client.index({
+                    index: 'lambda-s3-index',
+                    type: 'lambda-type',
+                    body: {
+                        todo: todo
+                    }
+                });
+                return res;
+            };
+            return indexDocument();
+        });
+
+        return Promise.all(promises);
     } catch (err) {
         console.log(err);
         const message = `Error getting object ${key} from bucket ${bucket}. Make sure they exist and your bucket is in the same region as this function.`;
