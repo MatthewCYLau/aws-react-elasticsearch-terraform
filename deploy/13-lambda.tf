@@ -89,6 +89,27 @@ resource "aws_lambda_function" "process_s3_upload" {
 
 }
 
+resource "aws_s3_bucket_notification" "upload" {
+  bucket = aws_s3_bucket.upload.id
+
+  lambda_function {
+    lambda_function_arn = aws_lambda_function.process_s3_upload.arn
+    events              = ["s3:ObjectCreated:*"]
+    filter_prefix       = "data/"
+    filter_suffix       = ".csv"
+  }
+
+  depends_on = [aws_lambda_permission.allow_bucket]
+}
+
+resource "aws_lambda_permission" "allow_bucket" {
+  statement_id  = "AllowExecutionFromS3Bucket"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.process_s3_upload.arn
+  principal     = "s3.amazonaws.com"
+  source_arn    = aws_s3_bucket.upload.arn
+}
+
 resource "aws_iam_role_policy_attachment" "process_s3_upload_attach" {
   role       = aws_iam_role.process_s3_upload.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
@@ -113,28 +134,32 @@ resource "aws_iam_role" "process_s3_upload" {
 EOF
 }
 
-# {
-#     "Version": "2012-10-17",
-#     "Statement": [
-#         {
-#             "Effect": "Allow",
-#             "Action": [
-#                 "s3:GetObject"
-#             ],
-#             "Resource": "arn:aws:s3:::*"
-#         }
-#     ]
-# }
+resource "aws_iam_role_policy" "process_s3_lambda" {
+  name = "prcoess-s3-upload-lambda-policy"
+  role = aws_iam_role.process_s3_upload.id
 
-# {
-#     "Version": "2012-10-17",
-#     "Statement": [
-#         {
-#             "Effect": "Allow",
-#             "Action": [
-#                 "es:ESHttpPost"
-#             ],
-#             "Resource": "*"
-#         }
-#     ]
-# }
+  policy = data.aws_iam_policy_document.process_s3_lambda.json
+
+}
+
+data "aws_iam_policy_document" "process_s3_lambda" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "s3:GetObject"
+    ]
+    resources = [
+      "${aws_s3_bucket.upload.arn}*"
+    ]
+  }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "es:ESHttpPost"
+    ]
+    resources = [
+      "${aws_elasticsearch_domain.es.arn}*"
+    ]
+  }
+}

@@ -2,7 +2,7 @@
 
 A reference project to deploy a React app onto Amazon ECS on AWS Fargate, and Amazon Elasticsearch Service with Terraform
 
-A movie search app with Amazon Elasticsearch Service
+A todo app with Amazon Elasticsearch Service
 
 ![AWS Architecture](img/aws-elasticsearch.JPG)
 
@@ -23,7 +23,9 @@ aws configure # configure your AWS CLI profile
 
 -   Create an [S3 bucket](https://www.terraform.io/docs/language/settings/backends/s3.html) to store Terraform state. Populate bucket name in `01-main.tf`
 
-*   Populate `terraform.tfvars`:
+*   Create a secret on [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/) named `DockerHubAccessToken` with key `DOCKER_HUB_ACCESS_TOKEN`, and your [Docker access token](https://docs.docker.com/docker-hub/access-tokens/) as value
+
+-   Populate `terraform.tfvars`:
 
 ```bash
 default_region      = "us-east-1"
