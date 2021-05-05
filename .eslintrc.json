@@ -51,7 +51,7 @@
         ],
         "react/destructuring-assignment": "off",
         "react/jsx-indent-props": ["warn", 4],
-        "react/jsx-curly-brace-presence": [false, { "props": "never", "children": "never" }],
+        "react/jsx-curly-brace-presence": [0, { "props": "never", "children": "never" }],
         "react/jsx-indent": [
             "warn",
             4,
