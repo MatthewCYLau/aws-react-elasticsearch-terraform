@@ -2,7 +2,7 @@
 
 A reference project to deploy a React app onto Amazon ECS on AWS Fargate, and Amazon Elasticsearch Service with Terraform
 
-A todo app with Amazon Elasticsearch Service
+A todo app fetching data from Amazon Elasticsearch Service
 
 ![AWS Architecture](img/aws-elasticsearch.JPG)
 
@@ -50,8 +50,12 @@ When prompted for `github_token`, provide the value and hit Return. Alternativel
 
 # Usage
 
--   Upload `deploy/lambdas/processS3Upload/data.txt` to the S3 ES Upload bucket
+-   Upload `deploy/lambdas/processS3Upload/data.csv` to the S3 ES Upload bucket
 -   Then, visit app at `aws_lb_dns_name`
+
+# Local Development
+
+-   Run `docker-compose up` to build, and run app in container
 
 ## Contributing
 
