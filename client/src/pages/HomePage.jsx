@@ -3,6 +3,7 @@ import { PageHeader } from 'antd';
 import { Card } from 'antd';
 import 'antd/dist/antd.css';
 import { Layout, Spin } from 'antd';
+import axios from 'axios';
 
 const { Content } = Layout;
 
@@ -31,7 +32,7 @@ const HomePage = () => {
                 <div className="site-layout-content">
                     <PageHeader
                         className="site-page-header"
-                        title={`Welcome ${currnetUsername}`}
+                        title={'Welcome!'}
                         subTitle="To-do list powered by AWS serverless architecture"
                         style={styles.header}
                     />
