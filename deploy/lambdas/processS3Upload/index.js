@@ -22,7 +22,7 @@ exports.handler = async (event, context) => {
     try {
         const { Body } = await s3.getObject(params).promise();
         const data = new Buffer.from(Body).toString('utf8');
-        const todos = data.split(',');
+        const todos = data.split(';');
 
         const promises = todos.map((todo) => {
             const indexDocument = async () => {
