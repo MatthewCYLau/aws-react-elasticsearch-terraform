@@ -18,7 +18,7 @@ const HomePage = () => {
     async function fetchTodos() {
         try {
             const res = await axios.get(process.env.REACT_APP_API_ENDPOINT + '/todos');
-            setTodos(res.Items);
+            setTodos(res.hits.hits);
             setLoadingComplete({ loadingComplete: true });
         } catch (err) {
             console.log(err);
@@ -39,9 +39,9 @@ const HomePage = () => {
                 </div>
                 {loadingComplete ? (
                     <div>
-                        {todos.map((todo, index) => (
-                            <Card key={todo.todoId ? todo.todoId : index} title={todo.name} style={{ width: 300 }}>
-                                <p>{todo.description}</p>
+                        {todos.map((todo, i) => (
+                            <Card key={todo._source.todoId} title={todo._source.name} style={{ width: 300 }}>
+                                <p>{todo._source.description}</p>
                             </Card>
                         ))}
                     </div>
