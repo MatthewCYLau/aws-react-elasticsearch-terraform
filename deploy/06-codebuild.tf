@@ -44,6 +44,11 @@ resource "aws_codebuild_project" "app" {
       name  = "ECR_REPO_URL"
       value = aws_ecr_repository.app.repository_url
     }
+
+    environment_variable {
+      name  = "REACT_APP_API_ENDPOINT"
+      value = aws_api_gateway_deployment.app.invoke_url
+    }
   }
 
   source {
