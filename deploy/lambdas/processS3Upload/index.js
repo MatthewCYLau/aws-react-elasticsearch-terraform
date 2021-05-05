@@ -25,12 +25,17 @@ exports.handler = async (event, context) => {
         const todos = data.split(';');
 
         const promises = todos.map((todo) => {
+            const todoId = todo.split(',')[0];
+            const name = todo.split(',')[0];
+            const description = todo.split(',')[0];
             const indexDocument = async () => {
                 const res = await client.index({
                     index: 'lambda-s3-index',
                     type: 'lambda-type',
                     body: {
-                        todo: todo
+                        todoId,
+                        name,
+                        description
                     }
                 });
                 return res;

@@ -95,7 +95,6 @@ resource "aws_s3_bucket_notification" "upload" {
   lambda_function {
     lambda_function_arn = aws_lambda_function.process_s3_upload.arn
     events              = ["s3:ObjectCreated:*"]
-    filter_prefix       = "data/"
     filter_suffix       = ".csv"
   }
 
