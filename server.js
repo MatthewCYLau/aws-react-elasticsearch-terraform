@@ -58,7 +58,8 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/todos', async (req, res) => {
     const data = await axios.get(process.env.REACT_APP_API_ENDPOINT + '/todos');
-    res.send(data);
+    console.log(data);
+    res.status(200);
 });
 
 // Handle React routing, return all requests to React app
