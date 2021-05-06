@@ -17,7 +17,7 @@ const HomePage = () => {
 
     async function fetchTodos() {
         try {
-            const res = await axios.get(process.env.REACT_APP_API_ENDPOINT + '/todos');
+            const res = await axios.get('/todos');
             setTodos(res.hits.hits);
             setLoadingComplete({ loadingComplete: true });
         } catch (err) {

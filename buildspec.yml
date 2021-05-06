@@ -17,7 +17,7 @@ phases:
         commands:
             - echo Build started on `date`
             - echo Building the Docker image...
-            - docker build --build-arg REACT_APP_API_ENDPOINT=$REACT_APP_API_ENDPOINT -t $IMAGE_NAME:latest .
+            - docker build -t $IMAGE_NAME:latest .
             - docker tag $IMAGE_NAME:latest $ECR_REPO_URL:latest
             - docker tag $IMAGE_NAME:latest $ECR_REPO_URL:$IMAGE_TAG
     post_build:

@@ -23,6 +23,10 @@
       {
         "name": "NODE_ENV",
         "value": "production"
+      },
+      {
+        "name": "REACT_APP_API_ENDPOINT",
+        "value": "${react_app_api_endpoint}"
       }
     ],
     "ulimits": [

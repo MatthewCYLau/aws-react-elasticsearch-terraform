@@ -3,7 +3,7 @@
 resource "aws_codepipeline" "app_codepipeline" {
   name       = "aws-elasticsearch-app"
   role_arn   = aws_iam_role.codepipeline_role.arn
-  depends_on = [aws_ecs_service.staging,aws_api_gateway_deployment.app]
+  depends_on = [aws_ecs_service.staging, aws_api_gateway_deployment.app]
 
 
   artifact_store {
