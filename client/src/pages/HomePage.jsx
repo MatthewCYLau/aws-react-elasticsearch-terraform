@@ -18,7 +18,7 @@ const HomePage = () => {
     async function fetchTodos() {
         try {
             const res = await axios.get('/todos');
-            setTodos(res.hits.hits);
+            setTodos(res.data.hits.hits);
             setLoadingComplete({ loadingComplete: true });
         } catch (err) {
             console.log(err);

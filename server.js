@@ -61,11 +61,6 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
-app.get('/todos', async (req, res) => {
-    const todos = await axios.get(process.env.REACT_APP_API_ENDPOINT + '/todos');
-    res.send(todos);
-});
-
 /**
  * Express default error handling - this middleware function must be added at
  * the end of the middleware function stack.

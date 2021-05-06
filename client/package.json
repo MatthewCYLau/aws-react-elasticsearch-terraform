@@ -22,7 +22,7 @@
     "eslintConfig": {
         "extends": "react-app"
     },
-    "proxy": "http://localhost:3001",
+    "proxy": "https://p5wasukoxi.execute-api.us-east-1.amazonaws.com/staging",
     "browserslist": {
         "production": [
             ">0.2%",
