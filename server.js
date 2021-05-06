@@ -58,7 +58,6 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/todos', async (req, res) => {
     const todos = await axios.get(process.env.REACT_APP_API_ENDPOINT + '/todos');
-    console.log(todos);
     res.send(todos.data);
 });
 

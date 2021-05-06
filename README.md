@@ -50,8 +50,8 @@ When prompted for `github_token`, provide the value and hit Return. Alternativel
 
 # Usage
 
--   Upload `deploy/lambdas/processS3Upload/data.csv` to the S3 ES Upload bucket
--   Then, visit app at `aws_lb_dns_name`
+-   Upload `deploy/lambdas/processS3Upload/data.csv` to the `upload_bucket_name` S3 bucket to trigger Lambda
+-   Then, visit app at `aws_lb_dns_name` to view todos
 
 # Local Development
 
