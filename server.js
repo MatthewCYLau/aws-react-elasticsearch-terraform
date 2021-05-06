@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const { createLogger, transports, format } = require('winston');
 const morgan = require('morgan');
-const axios = require('axios');
+// const axios = require('axios');
 
 /*
  * Configure the format of the logs and the channels to publish the logs in.
@@ -55,6 +55,10 @@ app.use(express.urlencoded({ extended: true })); // parse URL-encoded bodies
 
 // Serve any static files
 app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('/todos', (req, res) => {
+    res.json({ todo: 'foo', todo2: 'bar' });
+});
 
 // Handle React routing, return all requests to React app
 app.get('*', (req, res) => {

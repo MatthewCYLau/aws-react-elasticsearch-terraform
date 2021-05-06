@@ -5,8 +5,9 @@ RUN npm install --production
 FROM node:latest as build-client
 COPY client .
 COPY --from=install-client-deps node_modules node_modules
+ARG REACT_APP_API_ENDPOINT
 ENV REACT_APP_API_ENDPOINT ${REACT_APP_API_ENDPOINT}
-RUN npm run build
+RUN REACT_APP_API_ENDPOINT=${REACT_APP_API_ENDPOINT} npm run build
 
 FROM node:latest as install-server-deps
 COPY package*.json ./
