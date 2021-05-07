@@ -37,6 +37,17 @@ environment         = "staging"
 upload_bucket_name  = "matlau-s3-es-upload"
 ```
 
+## Deploy Lambda packages
+
+-   Navigate to `/deploy/lambdas/<FUNCTION_NAME>`
+-   Update the `deploy/lambdas/<FUNCTION_NAME>/updateFunction.sh` shell script with correct values i.e. Amazon S3 bucket name, and key. See documentation on AWS CLI `update-function-code` [here](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lambda/update-function-code.html)
+
+-   Run the script:
+
+```bash
+sh deploy/lambdas/<FUNCTION_NAME>/updateFunction.sh
+```
+
 ## Deploy
 
 ```bash

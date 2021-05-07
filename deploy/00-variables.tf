@@ -13,3 +13,5 @@ variable "default_region" {}
 variable "docker_username" {}
 
 variable "upload_bucket_name" {}
+
+variable "lambdas_bucket_name" {}
