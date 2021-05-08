@@ -9,9 +9,3 @@ resource "aws_s3_bucket" "upload" {
   acl           = "private"
   force_destroy = true
 }
-
-resource "aws_s3_bucket" "lambdas" {
-  bucket        = var.lambdas_bucket_name
-  acl           = "private"
-  force_destroy = true
-}

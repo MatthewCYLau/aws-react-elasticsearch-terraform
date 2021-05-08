@@ -39,6 +39,7 @@ upload_bucket_name  = "matlau-s3-es-upload"
 
 ## Deploy Lambda packages
 
+-   Create an S3 bucket to store your Lambda function packages
 -   Navigate to `/deploy/lambdas/<FUNCTION_NAME>`
 -   Update the `deploy/lambdas/<FUNCTION_NAME>/updateFunction.sh` shell script with correct values i.e. Amazon S3 bucket name, and key. See documentation on AWS CLI `update-function-code` [here](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lambda/update-function-code.html)
 
