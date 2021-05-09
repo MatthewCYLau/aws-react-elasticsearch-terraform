@@ -49,7 +49,7 @@ upload_bucket_name  = "matlau-s3-es-upload"
 sh deploy/lambdas/<FUNCTION_NAME>/updateFunction.sh
 ```
 
-Note, you may encounter 'Function not found' error the first time running the script
+Note, you may encounter `Function not found` error the first time running the script
 
 ## Deploy
 
