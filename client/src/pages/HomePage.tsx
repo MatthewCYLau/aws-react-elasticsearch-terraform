@@ -7,9 +7,21 @@ import axios from 'axios';
 
 const { Content } = Layout;
 
+interface LoadingState {
+    loadingComplete: boolean;
+}
+
+interface Todo {
+    _source: {
+        todoId: string;
+        name: string;
+        description: string;
+    };
+}
+
 const HomePage = () => {
     const [todos, setTodos] = useState([]);
-    const [loadingComplete, setLoadingComplete] = useState(false);
+    const [loadingComplete, setLoadingComplete] = useState<LoadingState>({ loadingComplete: false });
 
     useEffect(() => {
         fetchTodos();
@@ -39,7 +51,7 @@ const HomePage = () => {
                 </div>
                 {loadingComplete ? (
                     <div>
-                        {todos.map((todo, i) => (
+                        {todos.map((todo: Todo, i) => (
                             <Card key={todo._source.todoId} title={todo._source.name} style={{ width: 300 }}>
                                 <p>{todo._source.description}</p>
                             </Card>
